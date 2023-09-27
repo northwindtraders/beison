@@ -6,6 +6,7 @@
 #include <charconv>
 #include <regex>
 #include <utility>
+#include <cmath>
 
 namespace beison
 {
@@ -249,7 +250,7 @@ namespace beison
 	}
 	Value Value::number(double d) noexcept
 	{
-		if (!isfinite(d)) std::abort();
+		if (!std::isfinite(d)) std::abort();
 		Value val;
 		val.underlying_ = std::make_unique<ValueImpl>(ValueKindConstant<VK::Number>(), d);
 		return val;
